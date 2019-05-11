@@ -1,0 +1,47 @@
+ambulancer : Yes
+rd_defects : None
+crsh_sevri : B: Evident Injury
+rd_charact : Straight - Grade
+crash_time : 8:40
+crash_year : 2011
+county : Durham
+crash_mont : September
+rural_urba : rural
+bike_injur : B: Evident Injury
+bike_race : White
+drvr_vehty : Passenger Car
+crash_type : Motorist Drive Out - Sign controlled Intersection
+bike_dir : With Traffic
+city : None - Rural Crash
+workzone_i : No
+locality : Rural (<30% Developed)
+crashalcoh : No
+excsspdind : No
+bikeage_gr : 40 - 49
+rd_feature : Four-Way Intersection
+bike_age : 41
+drvr_injur : O: No Injury
+drvr_alc_d : No
+drvrage_gr : 70+
+light_cond : Daylight
+drvr_sex : Male
+crashday : Wednesday
+crash_grp : Motorist Failed to Yield - Sign-Controlled Intersection
+drvr_race : White
+developmen : Farms, Woods, Pastures
+bike_pos : Travel Lane
+bike_sex : Female
+speed_limi : 40 - 45 MPH
+traff_cntr : Stop sign
+rd_class : State Secondary Route
+lat : <latitude>
+lon : <longitude>
+drvr_age : 70+
+weather : Clear
+num_units : 2
+rd_surface : Smooth Asphalt
+num_lanes : 2 lanes
+hit_run : No
+drvr_estsp : 6-10 mph
+rd_config : Two-Way, Not Divided
+
