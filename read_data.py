@@ -94,7 +94,7 @@ for i in k['features']:
     db_engine.execute(crash_records.insert(),
             ambulancer=i['properties']['ambulancer'],
             rd_defects=i['properties']['rd_defects'],
-            crsh_sevri=i['properties']['crsh_sevri'],
+            crash_sevri=i['properties']['crsh_sevri'],
             rd_charact=i['properties']['rd_charact'],
             crash_time=i['properties']['crash_time'],
             crash_year=i['properties']['crash_year'],
