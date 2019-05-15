@@ -1,6 +1,7 @@
 import json
 import os
 import sqlalchemy
+import pandas as pd
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, inspect
 from sqlalchemy import Table, Column, Integer, String, DECIMAL, MetaData
@@ -138,3 +139,5 @@ for i in k['features']:
             hit_run=i['properties']['hit_run'],
             drvr_estsp=i['properties']['drvr_estsp'],
             rd_config=i['properties']['rd_config'])
+df = pd.read_sql_table('crash_records',db_engine)
+df.to_csv('data.csv')
