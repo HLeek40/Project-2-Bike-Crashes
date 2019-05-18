@@ -36,7 +36,7 @@ def buildDB(user,passwd):
     crash_records = Table(
         'crash_records',meta,
         Column('id',Integer,primary_key=True),
-        Column('crash_sevri',String(100)),
+        Column('crsh_sevri',String(100)),
         Column('rd_charact',String(100)),
         Column('crash_time',String(100)),
         Column('crash_year',String(100)),
@@ -75,7 +75,8 @@ def buildDB(user,passwd):
         Column('num_units',Integer),
         Column('hit_run',String(100)),
         Column('drvr_estsp',String(100)),
-        Column('rd_config',String(100))
+        Column('rd_config',String(100)),
+        Column('rd_feature',String(100))
     )
 
     # Create Table
@@ -90,7 +91,7 @@ def buildDB(user,passwd):
         db_engine.execute(crash_records.insert(),
             ambulancer=i['properties']['ambulancer'],
             rd_defects=i['properties']['rd_defects'],
-            crash_sevri=i['properties']['crsh_sevri'],
+            crsh_sevri=i['properties']['crsh_sevri'],
             rd_charact=i['properties']['rd_charact'],
             crash_time=i['properties']['crash_time'],
             crash_year=i['properties']['crash_year'],

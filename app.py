@@ -1,5 +1,3 @@
-import json
-import os
 import sqlalchemy
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, inspect
@@ -25,15 +23,61 @@ Crash_Records = Base.classes.crash_records
 
 @app.route("/")
 def index():
-    recs = db.session.query(Crash_Records).all()
-    outList = []
-    for i in recs:
+    sel =[
+        Crash_Records.crsh_sevri,
+        Crash_Records.rd_charact,
+        Crash_Records.county,
+        Crash_Records.crash_mont,
+        Crash_Records.rural_urba,
+        Crash_Records.drvr_vehty,
+        Crash_Records.crash_type,
+        Crash_Records.bike_dir,
+        Crash_Records.city,
+        Crash_Records.rd_feature,
+        Crash_Records.light_cond,
+        Crash_Records.drvr_sex,
+        Crash_Records.crashday,
+        Crash_Records.crash_grp,
+        Crash_Records.developmen,
+        Crash_Records.bike_pos,
+        Crash_Records.bike_sex,
+        Crash_Records.traff_cntr,
+        Crash_Records.rd_class,
+        Crash_Records.weather,
+        Crash_Records.rd_config
+    ]
+    results = db.session.query(*sel).all()
+    word = []
+    for rec in results:
         tmp_dict = {}
-        tmp_dict['LAT'] = i.lat
-        tmp_dict['LON'] = i.lon
-        outList.append(tmp_dict)
-    #return render_template('index.html')
-    return jsonify(outList)
-    
+        for col in sel:
+            colName = str(col).split('.')
+            python = f'tmp_dict[colName[1]] = rec.{colName[1]}'
+            exec(python)
+        word.append(tmp_dict)
+    words = jsonify(word)
+    return render_template('index.html')
+
+@app.route("/latling")
+def get_latling():
+    sel = [
+        Crash_Records.lat,
+        Crash_Records.lon,
+        Crash_Records.city,
+        Crash_Records.crash_type,
+        Crash_Records.crsh_sevri
+    ]
+    results = db.session.query(*sel).all()
+    latLing = []
+    for rec in results:
+        tmp_dict={}
+        tmp_dict['lat'] = rec.lat
+        tmp_dict['lon'] = rec.lon
+        tmp_dict['city'] = rec.city
+        tmp_dict['crash_type'] = rec.crash_type
+        tmp_dict['crsh_sevri'] = rec.crsh_sevri
+        latLing.append(tmp_dict)
+    return jsonify(latLing)
+
 if __name__ == "__main__":
     app.run()
