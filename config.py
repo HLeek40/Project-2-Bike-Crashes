@@ -1,0 +1,6 @@
+db_user=""
+db_passwd = ""
+API_KEY = ""
+db_name = "bike_crash_db"
+host = "localhost"
+port = "3306"

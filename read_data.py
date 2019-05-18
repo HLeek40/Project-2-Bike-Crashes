@@ -4,95 +4,90 @@ import sqlalchemy
 import pandas as pd
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, inspect
-from sqlalchemy import Table, Column, Integer, String, DECIMAL, MetaData
+from sqlalchemy import Table, Column, Integer, String, MetaData
+import pymysql
+pymysql.install_as_MySQLdb()
 
 # gather user data for db username and passwd
 # assuming localhost and standard port number (change if needed)
 
-user = input("enter db user name (i.e. root): ")
-passwd = input("enter db user password: ")
-host = 'localhost'
-port = 3306
+def buildDB(user,passwd):
+    host = 'localhost'
+    port = 3306
 
-# build mysql DB
-db_name = 'bike_crash_db'
-meta = MetaData()
-mysql_engine = create_engine('mysql://{}:{}@{}:{}'.format(user, passwd, host, port))
+    # build mysql DB
+    db_name = 'bike_crash_db'
+    meta = MetaData()
+    mysql_engine = create_engine('mysql://{}:{}@{}:{}'.format(user, passwd, host, port))
 
-#check to see if db exists, if so drop it and rebuild
-existing_databases = mysql_engine.execute("SHOW DATABASES;")
-existing_databases = [d[0] for d in existing_databases]
+    #check to see if db exists, if so drop it and rebuild
+    existing_databases = mysql_engine.execute("SHOW DATABASES;")
+    existing_databases = [d[0] for d in existing_databases]
 
-if db_name in existing_databases:
-    mysql_engine.execute("DROP DATABASE {};".format(db_name))
-    mysql_engine.execute("CREATE DATABASE {};".format(db_name))
-else:
-    mysql_engine.execute("CREATE DATABASE {};".format(db_name))
+    if db_name in existing_databases:
+        mysql_engine.execute("DROP DATABASE {};".format(db_name))
+        mysql_engine.execute("CREATE DATABASE {};".format(db_name))
+    else:
+        mysql_engine.execute("CREATE DATABASE {};".format(db_name))
 
-#create engine to new db
-db_engine = create_engine("mysql://{}:{}@{}:{}/{}".format(user,passwd,host,port,db_name))
+    #create engine to new db
+    db_engine = create_engine("mysql://{}:{}@{}:{}/{}".format(user,passwd,host,port,db_name))
 
-crash_records = Table(
-    'crash_records',meta,
-    Column('id',Integer,primary_key=True),
-    Column('ambulancer',String(100)),
-    Column('rd_defects',String(100)),
-    Column('crash_sevri',String(100)),
-    Column('rd_charact',String(100)),
-    Column('crash_time',String(100)),
-    Column('crash_year',String(100)),
-    Column('county',String(100)),
-    Column('crash_mont',String(100)),
-    Column('rural_urba',String(100)),
-    Column('bike_injur',String(100)),
-    Column('bike_race',String(100)),
-    Column('drvr_vehty',String(100)),
-    Column('crash_type',String(100)),
-    Column('bike_dir',String(100)),
-    Column('city',String(100)),
-    Column('workzone_i',String(100)),
-    Column('locality',String(100)),
-    Column('crashalcoh',String(100)),
-    Column('excsspdind',String(100)),
-    Column('bikeage_gr',String(100)),
-    Column('rd_feature',String(100)),
-    Column('bike_age',String(100)),
-    Column('drvr_injury',String(100)),
-    Column('drvr_alc_d',String(100)),
-    Column('drvrage_gr',String(100)),
-    Column('light_cond',String(100)),
-    Column('drvr_sex',String(100)),
-    Column('crashday',String(100)),
-    Column('crash_grp',String(100)),
-    Column('drvr_race',String(100)),
-    Column('developmen',String(100)),
-    Column('bike_pos',String(100)),
-    Column('bike_sex',String(100)),
-    Column('speed_limi',String(100)),
-    Column('traff_cntr',String(100)),
-    Column('rd_class',String(100)),
-    #Column('lat',DECIMAL(3,10)),
-    #Column('lon',DECIMAL(3,10)),
-    Column('lat',String(100)),
-    Column('lon',String(100)),
-    Column('drvr_age',String(100)),
-    Column('weather',String(100)),
-    Column('num_units',Integer),
-    Column('hit_run',String(100)),
-    Column('drvr_estsp',String(100)),
-    Column('rd_config',String(100))
-)
+    crash_records = Table(
+        'crash_records',meta,
+        Column('id',Integer,primary_key=True),
+        Column('crash_sevri',String(100)),
+        Column('rd_charact',String(100)),
+        Column('crash_time',String(100)),
+        Column('crash_year',String(100)),
+        Column('county',String(100)),
+        Column('crash_mont',String(100)),
+        Column('rural_urba',String(100)),
+        Column('bike_injur',String(100)),
+        Column('bike_race',String(100)),
+        Column('drvr_vehty',String(100)),
+        Column('crash_type',String(100)),
+        Column('bike_dir',String(100)),
+        Column('city',String(100)),
+        Column('workzone_i',String(100)),
+        Column('locality',String(100)),
+        Column('crashalcoh',String(100)),
+        Column('excsspdind',String(100)),
+        Column('bike_age',String(100)),
+        Column('drvr_injury',String(100)),
+        Column('drvr_alc_d',String(100)),
+        Column('drvrage_gr',String(100)),
+        Column('light_cond',String(100)),
+        Column('drvr_sex',String(100)),
+        Column('crashday',String(100)),
+        Column('crash_grp',String(100)),
+        Column('drvr_race',String(100)),
+        Column('developmen',String(100)),
+        Column('bike_pos',String(100)),
+        Column('bike_sex',String(100)),
+        Column('speed_limi',String(100)),
+        Column('traff_cntr',String(100)),
+        Column('rd_class',String(100)),
+        Column('lat',String(100)),
+        Column('lon',String(100)),
+        Column('drvr_age',String(100)),
+        Column('weather',String(100)),
+        Column('num_units',Integer),
+        Column('hit_run',String(100)),
+        Column('drvr_estsp',String(100)),
+        Column('rd_config',String(100))
+    )
 
-# Create Table
-meta.create_all(db_engine)
+    # Create Table
+    meta.create_all(db_engine)
 
-file = os.path.join('fred.geojson')
+    file = os.path.join('fred.geojson')
 
-with open(file) as f:
-     k = json.load(f)
+    with open(file) as f:
+        k = json.load(f)
 
-for i in k['features']:
-    db_engine.execute(crash_records.insert(),
+    for i in k['features']:
+        db_engine.execute(crash_records.insert(),
             ambulancer=i['properties']['ambulancer'],
             rd_defects=i['properties']['rd_defects'],
             crash_sevri=i['properties']['crsh_sevri'],
@@ -139,5 +134,3 @@ for i in k['features']:
             hit_run=i['properties']['hit_run'],
             drvr_estsp=i['properties']['drvr_estsp'],
             rd_config=i['properties']['rd_config'])
-df = pd.read_sql_table('crash_records',db_engine)
-df.to_csv('data.csv')
