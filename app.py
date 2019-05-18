@@ -47,16 +47,19 @@ def index():
         Crash_Records.rd_config
     ]
     results = db.session.query(*sel).all()
+    words = ""
     word = []
     for rec in results:
-        tmp_dict = {}
+        tmp_dict={}
         for col in sel:
             colName = str(col).split('.')
             python = f'tmp_dict[colName[1]] = rec.{colName[1]}'
             exec(python)
         word.append(tmp_dict)
-    words = jsonify(word)
-    return render_template('index.html')
+    for w in word:
+        for k in w.keys():
+            words = words + " " + w[k]
+    return render_template('index.html', wordcloud=words)
 
 @app.route("/latling")
 def get_latling():
