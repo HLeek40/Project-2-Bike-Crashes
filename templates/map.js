@@ -43,7 +43,7 @@ var crashdata = [];
   
   // Create map object and set default layers
   var myMap = L.map("map", {
-    center: [35.9132, 79.0558],
+    center: [35.9132, -79.0558],
     zoom: 5,
     layers: [light, cityLayer]
   });

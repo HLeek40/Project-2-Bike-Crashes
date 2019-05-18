@@ -5,39 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Flask Plotlyjs Example</title>
+  <title>Bicycle Crashes in Chapel Hill, NC</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
 
-<body>
-
-  <form>
-    DB User name:<input type="text" name="dbuser"></br>
-    DB Password:<input type="text" name="dbpass"></br>
-    Map API Key:<input type="text" name="key"></br>
-  </form>
-  <p><a class="btn btn-primary btn-lg" href="/buildDB/dbuser.value()/dbpass.value()/key.value()" role="button">Build DB</a></p>
-     
-
-  <!-- <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="{{ url_for('static', filename='js/bonus.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/app.js') }}"></script>-->
-
-</body>
-
-</html>
-
-
-<!-- //CODE associated with map
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Layers</title>
-
-  Leaflet CSS & JS
+  <!-- Leaflet CSS & JS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
   crossorigin=""/>
@@ -45,18 +16,78 @@
   integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
   crossorigin=""></script>
 
-  Our CSS
+  <!-- Our CSS -->
   <link rel="stylesheet" type="text/css" href="style.css">
+
+  <!-- Code for our wordcloud -->
+  <link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet">
+	
+  <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+
 </head>
 
 <body>
-  The div where we will inject our map
-  <div id="map"></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <!-- Added code to add the word cloud to the jumbotron   -->
+        <div id="myChart"></div>
+        <h1>Crash Data Dashboard</h1>
+        <p>Use the interactive charts below to explore the bike crash data</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <div class="well">
+          <h5>SELECT Sample:</h5>
+          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Sample MetaData</h3>
+          </div>
+          <div id="sample-metadata" class="panel-body"></div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <!-- The div where we will inject our map -->
+        <div id="map"></div>
 
-  API key
-  <script type="text/javascript" src="config.js"></script>
-  Our JS
-  <script type="text/javascript" src="logic.js"></script>
+        <!-- API key -->
+        <script type="text/javascript" src="config.js"></script>
+        <!-- Our JS -->
+        <script type="text/javascript" src="logic.js"></script>
+      </div>
+      <div class="col-md-5">
+        <div id="gauge"></div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div id="bubble"></div>
+    </div>
+  </div>
+  <script>
+    var wordcloud = {{wordcloud}};
+  </script>
+
+
+  <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script type="text/javascript" src="wordcloud.js"></script>
+  <form>
+    DB User name:<input type="text" name="dbuser"></br>
+    DB Password:<input type="text" name="dbpass"></br>
+    Map API Key:<input type="text" name="key"></br>
+  </form>
+  <p><a class="btn btn-primary btn-lg" href="/buildDB/dbuser.value()/dbpass.value()/key.value()" role="button">Build DB</a></p>
+     
 </body>
-</html> -->
+
+</html>
+
+
+
 
