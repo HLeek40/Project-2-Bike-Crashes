@@ -59,7 +59,7 @@ def index():
     for w in word:
         for k in w.keys():
             words = words + " " + w[k]
-    return render_template('index.html', wordcloud=words)
+    return render_template('earthquake.html', APIKEY=API_KEY, wordcloud=words)
 
 @app.route("/latling")
 def get_latling():
@@ -81,6 +81,21 @@ def get_latling():
         tmp_dict['crsh_sevri'] = rec.crsh_sevri
         latLing.append(tmp_dict)
     return jsonify(latLing)
+
+@app.route("/heat")
+def heatMap():
+    sel = [
+        Crash_Records.crashday,
+        Crash_Records.crash_mont
+    ]
+    results = db.session.query(*sel).all()
+    outList = []
+    for rec in results:
+        tmp_dict={}
+        tmp_dict['crashday'] = rec.crashday
+        tmp_dict['crash_mont'] = rec.crash_mont
+        outList.append(tmp_dict)
+    return jsonify(outList)
 
 if __name__ == "__main__":
     app.run()
