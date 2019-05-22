@@ -17,6 +17,10 @@
     integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
     crossorigin=""></script>
 
+    <!-- wordcloud.js1 code -->
+    <script src="https://www.koolchart.com/demo/LicenseKey/codepen/KoolChartLicense.js"></script>
+    <script src="https://www.koolchart.com/demo/KoolChart/JS/KoolChart.js"></script>
+    <link rel="stylesheet" href="https://www.koolchart.com/demo/KoolChart/Assets/Css/KoolChart.css"/>
 
   <!--D3 cdn-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
@@ -27,8 +31,14 @@
 
   <!-- Code for our wordcloud -->
   <link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet">
-	
+  
+  
+
   <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+
+  <!--CalendarHeat-->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 </head>
 
 <body>
@@ -36,16 +46,31 @@
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
         <!-- Added code to add the word cloud to the jumbotron   -->
-        <div id="myChart"></div>
+        <!-- <div id="myChart"></div> -->
+        <div id="chartHolder" style="height:500px; width:100%;"></div>
         <h1>Crash Data Dashboard</h1>
         <p>Use the interactive charts below to explore the bike crash data</p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-2">
-        <div class="well">
-          <h5>SELECT Sample:</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+        <div id="myDiv">
+          <h5>Month:</h5>
+          <select id="selMonth" onchange="drop(this.value)">
+          <option value = "">Select Month</option>
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+          </select>
         </div>
         <div class="panel panel-primary">
           <div class="panel-heading">
@@ -81,6 +106,7 @@
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script type="text/javascript" src="/static/wordcloud.js"></script>
   <script type="text/javascript" src="/static/map.js"></script>
+  <script type ="text/javascript" src="/static/calender.js"></script> 
   <!-- <script type="text/javascript" src="static/config.js"></script> -->
 </body>
 
