@@ -1,4 +1,10 @@
 // Annotated heatmap
+
+//pull in the data from the database! 
+d3.json("/heat").then(function(heatdata){
+    console.log()
+});
+
 var xValues = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 
 var yValues = [''];
@@ -11,6 +17,7 @@ var colorscaleValue = [
     [0, '#3D9970'],
     [1, '#001f3f']
   ];
+
 
 var data = [{
     x: xValues,
