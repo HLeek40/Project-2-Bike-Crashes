@@ -59,7 +59,7 @@ def index():
     for w in word:
         for k in w.keys():
             words = words + " " + w[k]
-    return render_template('earthquake.html', APIKEY=API_KEY, wordcloud=words)
+    return render_template('index.html', APIKEY=API_KEY, wordcloud=words)
 
 @app.route("/latling")
 def get_latling():

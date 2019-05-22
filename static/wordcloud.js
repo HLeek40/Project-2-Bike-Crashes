@@ -1,7 +1,7 @@
 var myConfig = {
   type: 'wordcloud',
   options: {
-    text: `${wordcloud}`,
+    text: wordcloud,
     minLength: 5,
     maxItems: 40,
     aspect: 'flow-center',
