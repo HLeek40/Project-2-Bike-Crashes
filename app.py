@@ -97,5 +97,28 @@ def heatMap():
         outList.append(tmp_dict)
     return jsonify(outList)
 
+@app.route("/charts")
+def charts():
+    sel = [
+        Crash_Records.crsh_sevri,
+        Crash_Records.crash_year,
+        Crash_Records.drvr_sex,
+        Crash_Records.bike_sex,
+        Crash_Records.weather,
+        Crash_Records.light_cond
+    ]
+    results = db.session.query(*sel).all()
+    outList = []
+    for rec in results:
+        tmp_dict={}
+        tmp_dict['crsh_sevri'] = rec.crsh_sevri
+        tmp_dict['crash_year'] = rec.crash_year
+        tmp_dict['drvr_sex'] = rec.drvr_sex
+        tmp_dict['bike_sex'] = rec.bike_sex
+        tmp_dict['weather'] = rec.weather
+        tmp_dict['light_cond'] = rec.light_cond
+        outList.append(tmp_dict)
+    return jsonify(outList)
+    
 if __name__ == "__main__":
     app.run()
