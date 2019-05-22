@@ -31,8 +31,14 @@
 
   <!-- Code for our wordcloud -->
   <link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet">
-	
+  
+  
+
   <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+
+  <!--CalendarHeat-->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 </head>
 
 <body>
@@ -48,9 +54,23 @@
     </div>
     <div class="row">
       <div class="col-md-2">
-        <div class="well">
-          <h5>SELECT Sample:</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+        <div id="myDiv">
+          <h5>Month:</h5>
+          <select id="selMonth" onchange="drop(this.value)">
+          <option value = "">Select Month</option>
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+          </select>
         </div>
         <div class="panel panel-primary">
           <div class="panel-heading">
@@ -84,6 +104,7 @@
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script type="text/javascript" src="/static/wordcloud.js"></script>
   <script type="text/javascript" src="/static/map.js"></script>
+  <script type ="text/javascript" src="/static/calender.js"></script> 
   <!-- <script type="text/javascript" src="static/config.js"></script> -->
 </body>
 
