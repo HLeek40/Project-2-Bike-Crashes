@@ -49,6 +49,7 @@ def index():
     results = db.session.query(*sel).all()
     words = ""
     word = []
+    wordUp=[]
     for rec in results:
         tmp_dict={}
         for col in sel:
@@ -58,8 +59,10 @@ def index():
         word.append(tmp_dict)
     for w in word:
         for k in w.keys():
-            words = words + " " + w[k]
-    return render_template('index.html', APIKEY=API_KEY, wordcloud=words)
+            #words = words + " " + w[k]
+            wordUp.append(w[k])
+    #print(wordUp)
+    return render_template('index.html', APIKEY=API_KEY, wordcloud=wordUp)
 
 @app.route("/latling")
 def get_latling():
@@ -119,6 +122,6 @@ def charts():
         tmp_dict['light_cond'] = rec.light_cond
         outList.append(tmp_dict)
     return jsonify(outList)
-    
+
 if __name__ == "__main__":
     app.run()
