@@ -57,11 +57,15 @@ def index():
             python = f'tmp_dict[colName[1]] = rec.{colName[1]}'
             exec(python)
         word.append(tmp_dict)
+    filter_words={}
     for w in word:
         for k in w.keys():
             #words = words + " " + w[k]
-            wordUp.append(w[k])
+            #wordUp.append(w[k])
+            filter_words[w[k]] = 1
+    wordUp = list(filter_words.keys())
     #print(wordUp)
+    #print(str(len(wordUp)))
     return render_template('index.html', APIKEY=API_KEY, wordcloud=wordUp)
 
 @app.route("/latling")

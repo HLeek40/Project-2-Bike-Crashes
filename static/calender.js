@@ -3,11 +3,11 @@
 
 //pull in the data from the database! 
 d3.json("/heat").then(function(heatdata){
-    console.log(heatdata)
+    //console.log(heatdata)
     
     for(var i = 0; i < heatdata.length; i++){
-        console.log(heatdata[i].crash_mont)
-        console.log(heatdata[i].crashday)
+        //console.log(heatdata[i].crash_mont)
+        //console.log(heatdata[i].crashday)
     }
 
 });

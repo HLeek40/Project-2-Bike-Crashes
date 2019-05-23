@@ -40,13 +40,11 @@ function changeData(){
   document.getElementById("chart1").setData(makeData());
   setTimeout(changeData, 2000);
  }
-
+console.log(wordcloud);
  function makeData(){
   var i, n,
    chartData = [],
-   data = ["PRAY","NEW","DO","DESIGN","CONCENTRATE","GREAT","LEAD","MOMENT","LOVE","DO","NEW","PRAY","GREAT","DESIGN","CREATIVE","LOVE","STUNNING","PRAY","BABY","LOVELY","DESIGN","GET","GOOD","NEW","COMMUNICATE","LOVE","NEW",
-            "SUCCESS","LOVELY","LOVE","LEARN","PRAY","LOVE","COOL","DO","LOVE","GORGEOUS","HAPPY","GOAL","STORY","LOVE","STUNNING","COMMUNICATE","PRAY","GREAT","HAVE","LOVE","PEOPLE","MIRACLE","COMMUNICATE","WALK","LOVE","DO","COOL","WALK","PRAY","LIKE","LOVELY","NEW","DESIGN","TEACH","LOVE","DO"];
-  
+   data = wordcloud;
   for(i = 0, n = data.length ; i < n ; i += 1){
    chartData.push({
     text : data[i],

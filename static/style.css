@@ -9,8 +9,9 @@ html {
 }
 
 #map {
-  width:auto;
-  height:100%;
+  margin-top: 50px;
+  height:300px;
+  position: relative;
 }
 .legend {
   line-height: 18px;
