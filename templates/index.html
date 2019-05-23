@@ -52,33 +52,7 @@
         <p>Use the interactive charts below to explore the bike crash data</p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-2">
-        <div id="myDiv">
-          <h5>Month:</h5>
-          <select id="selMonth" onchange="drop()">
-          <option value = "">Select Month</option>
-          <option value="January">January</option>
-          <option value="February">February</option>
-          <option value="March">March</option>
-          <option value="April">April</option>
-          <option value="May">May</option>
-          <option value="June">June</option>
-          <option value="July">July</option>
-          <option value="August">August</option>
-          <option value="September">September</option>
-          <option value="October">October</option>
-          <option value="November">November</option>
-          <option value="December">December</option>
-          </select>
-        </div>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Sample MetaData</h3>
-          </div>
-          <div id="sample-metadata" class="panel-body"></div>
-        </div>
-      </div>
+    
       <div class="col-md-5">
         <!-- The div where we will inject our map -->
         <div class="row">
@@ -95,6 +69,30 @@
       <div id="bubble"></div>
     </div>
   </div>
+
+  
+      <div id="myDiv">
+        <h5>Month:</h5>
+        <select id="selMonth" onchange="drop()">
+        <option value = "">Select Month</option>
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+        </select>
+      </div>
+
+      <!--Div to insert Calendar-->
+      <div id="cal"></div>
+    
  
   <script type="text/javascript" src='/static/app.js'></script>
         <script type="text/javascript">
