@@ -40,39 +40,6 @@ d3.json("/barchart").then(function(data) {
     data1.push(trace);
   });
 
-//var layout = {barmode: 'stack'};
-var layout = {
-  title: {
-    text:'Count of Car Crash Severity',
-    font: {
-      family: 'Courier New, monospace',
-      size: 24,
-      barmode: 'stack'
-    },
-    xref: 'paper',
-    x: 0.05,
-  },
-  xaxis: {
-    title: {
-      text: '',
-      font: {
-        family: 'Courier New, monospace',
-        size: 24,
-        color: '#7f7f7f'
-      }
-    },
-  },
-  yaxis: {
-    title: {
-      text: 'Number of Injuries',
-      font: {
-        family: 'Courier New, monospace',
-        size: 24,
-        color: '#7f7f7f'
-      }
-    }
-  }
-};
 var bub = document.getElementById('bubble');
 // Plot the chart to a div tag with id "plot"
 Plotly.newPlot(bubble, data1, layout);
