@@ -59,11 +59,11 @@ week.push(sat);
 console.log(week);
 console.log(heatdata);
 
-var yTry = ['Week']
+var yV = [" ", " ", " ", " ", " ", " ", " "]
 
 var data = [{
     x: xLabels,
-    y: yTry,
+    y: yV,
     z: week,
     type: 'heatmap',
     colorscale: 'Viridis',
