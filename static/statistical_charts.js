@@ -40,8 +40,11 @@ d3.json("/barchart").then(function(data) {
     data1.push(trace);
   });
 
+<<<<<<< HEAD
 var layout = {barmode: 'stack'};
 
+=======
+>>>>>>> 3c17e30c945279b64f1aafb88b2c0781ed464d53
 var bub = document.getElementById('bubble');
 // Plot the chart to a div tag with id "plot"
 Plotly.newPlot(bubble, data1, layout);
@@ -62,9 +65,9 @@ var trace1 = {
 );
 //////////////////////////////////////////////////////////
 // Create the Traces
-d3.json("/piechart2").then(function(data) {
+d3.json("/piechart3").then(function(data) {
 
-var trace2 = {
+var trace3 = {
   values: data.map(row => row.light_cond),
   labels: ["Dark-Lighted Roadway", "Dark-Roadway Not Lighted", "Daylight", "Dusk", "Unknown"],
   mode: "markers",
@@ -72,41 +75,34 @@ var trace2 = {
   name: "Light Condition"
   };
    // Plot the chart to a div tag with id "plot"
-   Plotly.newPlot("plot", trace2, layout)}
+   Plotly.newPlot("plot", trace3, layout)}
    );
  //////////////////////////////////////////////////////////
    // Create the Traces
-d3.json("/piechart3").then(function(data) {
+d3.json("/piechart4").then(function(data) {
   //code for plots goes here, where you have access to data
 
-  var trace3 = {
+  var trace4 = {
     values: data.map(row => row.bike_sex),
     labels: ["Female", "Male", "Unknown"],
     mode: "markers",
     type: "pie",
     name: "Gender of Biker"
   };
-  Plotly.newPlot("plot", trace3, layout)}
+  Plotly.newPlot("plot", trace4, layout)}
    );
 
  ///////////////////////////////////////////////
-d3.json("/piechart4").then(function(data) {  
+d3.json("/piechart2").then(function(data) {  
 
-var trace4 = {
+var trace2 = {
     values: data.map(row => row.drvr_sex),
     labels: ["Female", "Male", "Unknown"],
     mode: "markers",
     type: "pie",
     name: "Sex of Driver"
   };
-
-  // Define the plot layout
-  var layout = {
-    title: "Biker Crash Data",
-    xaxis: { title: "######" },
-    yaxis: { title: "#########" }
-  };
   
   // Plot the chart to a div tag with id "plot"
-  Plotly.newPlot("plot", trace4, layout)}
+  Plotly.newPlot("plot", trace2, layout)}
 );

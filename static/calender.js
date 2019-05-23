@@ -10,14 +10,7 @@ var drop = () => {
 //pull in the data from the database! 
 d3.json("/heat").then(function(heatdata){
     var filterMonth = heatdata.filter(x => x.crash_mont == month)
-   // console.log(filterMonth)
-    
-    // for(var i = 0; i < filterMonth.length; i++){
-    //     // console.log(filterMonth[i].crash_mont)
-    //     // console.log(filterMonth[i].crashday)
-    // }
-
-
+   
 
  var xLabels = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
  
@@ -61,8 +54,7 @@ week.push(wed);
 week.push(thurs);
 week.push(fri);
 week.push(sat);
-//console.log(week);
-//console.log(heatdata);
+
 
 var yV = [" ", " ", " ", " ", " ", " ", " "]
 
@@ -91,8 +83,7 @@ var layout = {
     }
 
 };
-//console.log(data);
-//console.log(layout);
+
 
 
 //Create the plot 
@@ -100,7 +91,6 @@ var layout = {
 var p = document.getElementById('cal');
 Plotly.newPlot(p,data, layout)
 });
-
 
 
 }
