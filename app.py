@@ -109,10 +109,6 @@ def charts():
     sel = [
         Crash_Records.crsh_sevri,
         Crash_Records.crash_year,
-        #Crash_Records.drvr_sex,
-        #Crash_Records.bike_sex,
-        #Crash_Records.weather,
-        #Crash_Records.light_cond
     ]
     results = db.session.query(*sel).all()
     years={}
@@ -126,6 +122,58 @@ def charts():
             years[rec.crash_year][rec.crsh_sevri] = 1
         
     return jsonify(years)
+
+@app.route("/piechart1")
+def pie1():
+    sel = [
+        Crash_Records.weather
+    ]
+    results = db.session.query(*sel).all()
+    outList = []
+    for rec in results:
+        tmp_dict={}
+        tmp_dict['weather'] = rec.weather
+        outList.append(tmp_dict)
+    return jsonify(outList)
+
+@app.route("/piechart2")
+def pie2():
+    sel = [
+        Crash_Records.drvr_sex
+    ]
+    results = db.session.query(*sel).all()
+    outList = []
+    for rec in results:
+        tmp_dict={}
+        tmp_dict['drvr_sex'] = rec.drvr_sex
+        outList.append(tmp_dict)
+    return jsonify(outList)
+
+@app.route("/piechart3")
+def pie3():
+    sel = [
+        Crash_Records.light_cond
+    ]
+    results = db.session.query(*sel).all()
+    outList = []
+    for rec in results:
+        tmp_dict={}
+        tmp_dict['light_cond'] = rec.light_cond
+        outList.append(tmp_dict)
+    return jsonify(outList)
+
+@app.route("/piechart4")
+def pie4():
+    sel = [
+        Crash_Records.bike_sex
+    ]
+    results = db.session.query(*sel).all()
+    outList = []
+    for rec in results:
+        tmp_dict={}
+        tmp_dict['bike_sex'] = rec.bike_sex
+        outList.append(tmp_dict)
+    return jsonify(outList)
 
 if __name__ == "__main__":
     app.run()

@@ -97,7 +97,8 @@ var layout = {
 
 //Create the plot 
 //my div is where the calendar goes in the html 
-Plotly.newPlot('myDiv',data, layout)
+var p = document.getElementById('cal');
+Plotly.newPlot(p,data, layout)
 });
 
 

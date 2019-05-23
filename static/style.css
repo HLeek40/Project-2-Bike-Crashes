@@ -10,8 +10,8 @@ html {
 
 #map {
   margin-top: 50px;
-  height:450px;
-  width: 750px;
+  height:550px;
+  width: 1250px;
   position: relative;
 }
 .legend {

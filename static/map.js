@@ -21,7 +21,7 @@ d3.json(baseURL).then(function(response) {
 
     var LAT = +response[i].lat;
     var LON = +response[i].lon;
-    markers.addLayer(L.circleMarker([LAT, LON])).bindPopup(response[i].city);
+    markers.addLayer(L.circleMarker([LAT, LON]).bindPopup("City: " + response[i].city + "<br>Crash Severity: " + response[i].crsh_sevri));
   }
   // Add our marker cluster layer to the map
   myMap.addLayer(markers);
