@@ -1,27 +1,32 @@
 // Annotated heatmap
 //import plotly.graph_objs as go
 
+//drop down function to reference in html
+//listen UP function
+var drop = () => {
+	var month = document.getElementById("selMonth").value;
+  alert(`You selected ${month}`);
+
 //pull in the data from the database! 
 d3.json("/heat").then(function(heatdata){
-    console.log(heatdata)
+    var filterMonth = heatdata.filter(x => x.crash_mont == month)
+   // console.log(filterMonth)
     
-    for(var i = 0; i < heatdata.length; i++){
-        console.log(heatdata[i].crash_mont)
-        console.log(heatdata[i].crashday)
-    }
-//drop down function to reference in html
-function drop(month){
-    var yMonth = month.value;
-}
+    // for(var i = 0; i < filterMonth.length; i++){
+    //     // console.log(filterMonth[i].crash_mont)
+    //     // console.log(filterMonth[i].crashday)
+    // }
+
+
 
  var xLabels = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
  
  //This gives us a list of all the crashdays
-var xValues = heatdata.map(hdata => hdata.crashday);
+var xValues = filterMonth.map(hdata => hdata.crashday);
 console.log(xValues);
 
 //List of all the crash months 
-var yValues = heatdata.map(hdata => hdata.crash_mont);
+var yValues = filterMonth.map(hdata => hdata.crash_mont);
 console.log(yValues);
 
 var week = [];
@@ -56,8 +61,8 @@ week.push(wed);
 week.push(thurs);
 week.push(fri);
 week.push(sat);
-console.log(week);
-console.log(heatdata);
+//console.log(week);
+//console.log(heatdata);
 
 var yV = [" ", " ", " ", " ", " ", " ", " "]
 
@@ -86,8 +91,8 @@ var layout = {
     }
 
 };
-console.log(data);
-console.log(layout);
+//console.log(data);
+//console.log(layout);
 
 
 //Create the plot 
@@ -97,3 +102,4 @@ Plotly.newPlot('myDiv',data, layout)
 
 
 
+}
