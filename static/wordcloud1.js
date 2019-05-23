@@ -5,7 +5,7 @@ KoolChart.create("chart1", "chartHolder", chartVars, "100%", "100%");
 function chartReadyHandler(id) {
   document.getElementById(id).setLayout(layoutStr);
   document.getElementById(id).setData(makeData());
-  setTimeout(changeData, 3000);
+  setTimeout(changeData, 30000);
 }
 
 var layoutStr =
@@ -38,7 +38,7 @@ var layoutStr =
 
 function changeData(){
   document.getElementById("chart1").setData(makeData());
-  setTimeout(changeData, 2000);
+  setTimeout(changeData, 20000);
  }
 console.log(wordcloud);
  function makeData(){
