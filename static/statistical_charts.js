@@ -40,11 +40,8 @@ d3.json("/barchart").then(function(data) {
     data1.push(trace);
   });
 
-<<<<<<< HEAD
 var layout = {barmode: 'stack'};
 
-=======
->>>>>>> 3c17e30c945279b64f1aafb88b2c0781ed464d53
 var bub = document.getElementById('bubble');
 // Plot the chart to a div tag with id "plot"
 Plotly.newPlot(bubble, data1, layout);
